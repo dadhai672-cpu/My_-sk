@@ -1,0 +1,76 @@
+# My_-sk
+Only for you my jaan 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For My Jaan</title>
+    <style>
+        body { margin: 0; overflow: hidden; background: #000; font-family: 'Arial', sans-serif; }
+        #canvas { display: block; }
+        
+        /* Nylon/Neon Color Text Style */
+        #message {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 3rem;
+            font-weight: bold;
+            color: #fff;
+            text-shadow: 0 0 10px #ff00de, 0 0 20px #ff00de, 0 0 40px #ff00de;
+            opacity: 0;
+            transition: opacity 2s ease-in;
+            text-align: center;
+            pointer-events: none;
+        }
+
+        .touch-heart {
+            position: absolute;
+            color: #ff4d4d;
+            font-size: 20px;
+            animation: float 1s forwards;
+            pointer-events: none;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0) scale(1); opacity: 1; }
+            100% { transform: translateY(-100px) scale(1.5); opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+
+    <div id="message">I LOVE YOU MY JAAN</div>
+    <canvas id="canvas"></canvas>
+
+    <script>
+        const canvas = document.getElementById('canvas');
+        const ctx = canvas.getContext('2d');
+        const message = document.getElementById('message');
+        
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        // Heart particles ka logic (Bikhar kar judna)
+        // Yahan par hum particles ko random position se heart shape me layenge
+        
+        setTimeout(() => {
+            message.style.opacity = '1';
+        }, 3000); // Animation ke baad message dikhega
+
+        // Click handler for heart & text
+        window.addEventListener('click', (e) => {
+            const heart = document.createElement('div');
+            heart.className = 'touch-heart';
+            heart.innerHTML = '❤️ I Love You';
+            heart.style.left = e.clientX + 'px';
+            heart.style.top = e.clientY + 'px';
+            document.body.appendChild(heart);
+            
+            setTimeout(() => heart.remove(), 1000);
+        });
+    </script>
+</body>
+</html>
